@@ -55,19 +55,6 @@ define('droplet/ResizeSensor/ResizeSensorApi', ['droplet/ResizeSensor/ResizeSens
 			delete allResizeSensors[sensorId];
 		};
 
-		ResizeSensorApi.prototype.resetTargetElement = function (targetElement) {
-			var sensorId = this.getSensorId(targetElement);
-
-			/** @var ResizeSensor */
-			var Sensor = allResizeSensors[sensorId];
-
-			if (!Sensor) {
-				console && console.error("Can't reset target element (ResizeSensor not found).", targetElement);
-			}
-
-			Sensor.resetTargetElement(targetElement);
-		};
-
 		/**
 		 * @param {HTMLElement} targetElement
 		 * @returns {string}
