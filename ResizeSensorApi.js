@@ -1,7 +1,7 @@
 /**
  * @see https://github.com/pesla/ResizeSensor
  * @author Peter Slagter
- * @copyright MIT
+ * @license MPL version 2.0
  * @preserve
  */
 
