@@ -6,12 +6,9 @@ Performance friendly element resize detection.
 This library is heavily based on:
 
 - [This article](http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/) on backalleycoder.com
-- [@sdecima's work in `javascript-detect-element-size`'](https://github.com/sdecima/javascript-detect-element-resize).
-- [@marcj's EQ library](https://github.com/marcj/css-element-queries/).
+- [@sdecima's work in `javascript-detect-element-size`'](https://github.com/sdecima/javascript-detect-element-resize)
 
-
-Why?
----
+## Why?
 
 I [quote]((http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/)):
 
@@ -26,22 +23,41 @@ There's no native resize event on elements in most browsers (except for IE which
 
 Check out [ElementQueries.js](https://github.com/pesla/ElementQueries) if you're looking for cross-browser element queries.
 
-Browser support
----------------
+## Browser support
 
-@todo
+ResizeSensors are used in production (and maintained) by [Procurios](https://procurios.com). It's tested on Chrome, Safari, Opera, Firefox and IE7+. Internet Explorer uses the native available `onresize` event on elements.
 
-Example
--------
+## Usage
 
-@todo
+`requirejs` is used for module definitions / loading:
 
-Installation
-------
+```js
+require(['droplet/ResizeSensor/ResizeSensorApi'],
+	/**
+	 * @param ResizeSensorApi
+	 */
+	function (ResizeSensorApi) {
+		ResizeSensorApi.create(element, callback);
+	}
+);
+```
 
-@todo
+The `ResizeSensorApi` contains the following public methods:
 
-License
--------
+```js
+/**
+ * @param {HTMLElement} targetElement
+ * @param {Function} callback
+ * @returns {ResizeSensor}
+ */
+ResizeSensorApi.create(targetElement, callback);
 
-MIT license.
+/**
+ * @param {HTMLElement} targetElement
+ */
+ResizeSensorApi.destroy(targetElement);
+```
+
+## License
+
+[MPL version 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
