@@ -21,7 +21,7 @@ There's no native resize event on elements in most browsers (except for IE which
 - Implement size-based loading of content.
 - ... And anything else you can imagine.
 
-Check out [ElementQueries.js](https://github.com/pesla/ElementQueries) if you're looking for cross-browser element queries.
+Check out [ElementQueries.js](https://github.com/procurios/ElementQueries) if you're looking for cross-browser element queries.
 
 ## Browser support
 
