@@ -1,7 +1,8 @@
 /**
  * @see https://github.com/pesla/ResizeSensor
  * @author Peter Slagter
- * @license MPL version 2.0
+ * @license MIT
+ * @description Based on https://github.com/marcj/css-element-queries
  * @preserve
  */
 
