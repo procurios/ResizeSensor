@@ -7,6 +7,7 @@ This library is heavily based on:
 
 - [This article](http://www.backalleycoder.com/2013/03/18/cross-browser-event-based-element-resize-detection/) on backalleycoder.com
 - [@sdecima's work in `javascript-detect-element-size`'](https://github.com/sdecima/javascript-detect-element-resize)
+- [@marcj's EQ library](https://github.com/marcj/css-element-queries/)
 
 ## Why?
 
