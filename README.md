@@ -61,4 +61,4 @@ ResizeSensorApi.destroy(targetElement);
 
 ## License
 
-[MPL version 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
+MIT (see LICENSE)
