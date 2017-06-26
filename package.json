@@ -1,0 +1,22 @@
+{
+  "name": "resizeSensor",
+  "version": "0.1.0",
+  "description": "Performance friendly element resize detection",
+  "main": "dist/resizeSensor.min.js",
+  "scripts": {
+    "start": "onchange 'src/*.*' -- npm run build",
+    "build": "npm run bundle && npm run minify",
+    "bundle": "browserify -do dist/resizeSensor.js src/sensors.js",
+    "minify": "uglifyjs -m -c -o dist/resizeSensor.min.js dist/resizeSensor.js 2>/dev/null"
+  },
+  "author": "Procurios <dev@procurios.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/procurios/ResizeSensor/issues"
+  },
+  "devDependencies": {
+    "browserify": "8.1.0",
+    "onchange": "latest",
+    "uglify-js": "2.4.16"
+  }
+}
