@@ -5,15 +5,12 @@
   "main": "dist/resizeSensor.min.js",
   "scripts": {
     "start": "onchange 'src/*.*' -- npm run build",
-    "build": "npm run bundle && npm run minify",
-    "bundle": "browserify -do dist/resizeSensor.js src/sensors.js",
+    "build": "npm run bundle && node transform-named && npm run minify",
+    "bundle": "browserify -do dist/resizeSensor.js src/sensors.js --standalone resizeSensor",
     "minify": "uglifyjs -m -c -o dist/resizeSensor.min.js dist/resizeSensor.js 2>/dev/null"
   },
   "author": "Procurios <dev@procurios.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/procurios/ResizeSensor/issues"
-  },
   "devDependencies": {
     "browserify": "8.1.0",
     "onchange": "latest",
