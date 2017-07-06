@@ -34,8 +34,8 @@ var css = (function () {
 
         // Browser specific animation properties
         var keyframePrefix = '';
-        var browserPrefixes = 'Webkit Moz O ms'.split(' ');
-        var startEvents = 'webkitAnimationStart animationstart oAnimationStart MSAnimationStart'.split(' ');
+        var browserPrefixes = ['Webkit', 'Moz', 'O', 'ms'];
+        var startEvents = ['webkitAnimationStart', 'animationstart', 'oAnimationStart', 'MSAnimationStart'];
 
         var i;
         var l = browserPrefixes.length;
