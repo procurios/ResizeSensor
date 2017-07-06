@@ -1,4 +1,4 @@
-var css = (function () {
+var css = (function (global) {
     'use strict';
 
     /** @var {null|Object} */
@@ -16,7 +16,7 @@ var css = (function () {
             return animationPropertiesForBrowser;
         }
 
-        var testElement = document.createElement('div');
+        var testElement = global.document.createElement('div');
         var supportsUnprefixedAnimationProperties = ('animationName' in testElement.style);
 
         // Unprefixed animation properties
@@ -66,7 +66,7 @@ var css = (function () {
             return isCssAnimationSupported;
         }
 
-        var testElement = document.createElement('div');
+        var testElement = global.document.createElement('div');
         var isAnimationSupported = ('animationName' in testElement.style);
 
         if (isAnimationSupported) {
@@ -101,15 +101,15 @@ var css = (function () {
 
         cssRules = cssRules.join(' ');
 
-        var headElem = document.head || document.getElementsByTagName('head')[0];
+        var headElem = global.document.head || global.document.getElementsByTagName('head')[0];
 
-        var styleElem = document.createElement('style');
+        var styleElem = global.document.createElement('style');
         styleElem.type = 'text/css';
 
         if (styleElem.styleSheet) {
             styleElem.styleSheet.cssText = cssRules;
         } else {
-            styleElem.appendChild(document.createTextNode(cssRules));
+            styleElem.appendChild(global.document.createTextNode(cssRules));
         }
 
         headElem.appendChild(styleElem);
@@ -120,6 +120,6 @@ var css = (function () {
         isAnimationSupported: isCSSAnimationSupported,
         getAnimationPropertiesForBrowser: getAnimationPropertiesForBrowser
     };
-})();
+})(typeof window !== 'undefined' ? window : this);
 
 module.exports = css;
