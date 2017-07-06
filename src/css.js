@@ -119,7 +119,7 @@ var css = (function () {
         insertResizeSensorStyles: insertResizeSensorStyles,
         isAnimationSupported: isCSSAnimationSupported,
         getAnimationPropertiesForBrowser: getAnimationPropertiesForBrowser
-    }
+    };
 })();
 
 module.exports = css;
