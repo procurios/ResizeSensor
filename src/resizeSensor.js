@@ -117,7 +117,7 @@ var resizeSensorFactory = (function () {
      * @returns {boolean}
      */
     resizeSensor.prototype.isResized = function (currentDimensions) {
-        return (currentDimensions.width !== this.dimensions.width || currentDimensions.height !== this.dimensions.height)
+        return (currentDimensions.width !== this.dimensions.width || currentDimensions.height !== this.dimensions.height);
     };
 
     /**
@@ -183,7 +183,7 @@ var resizeSensorFactory = (function () {
         create: function (targetElement, callback) {
             return new resizeSensor(targetElement, callback);
         }
-    }
+    };
 })();
 
 module.exports = resizeSensorFactory;
