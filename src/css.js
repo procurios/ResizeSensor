@@ -16,46 +16,46 @@ var css = (function () {
             return animationPropertiesForBrowser;
         }
 
-    	var testElement = document.createElement('div');
-    	var supportsUnprefixedAnimationProperties = ('animationName' in testElement.style);
+        var testElement = document.createElement('div');
+        var supportsUnprefixedAnimationProperties = ('animationName' in testElement.style);
 
-    	// Unprefixed animation properties
-    	var animationStartEvent = 'animationstart';
-    	var animationName = 'resizeanim';
+        // Unprefixed animation properties
+        var animationStartEvent = 'animationstart';
+        var animationName = 'resizeanim';
 
-    	if (supportsUnprefixedAnimationProperties) {
-    		return {
-    			keyframesRule: '@keyframes ' + animationName + ' {from { opacity: 0; } to { opacity: 0; }}',
-    			styleDeclaration: 'animation: 1ms ' + animationName + ';',
-    			animationStartEvent: animationStartEvent,
-    			animationName: animationName
-    		};
-    	}
+        if (supportsUnprefixedAnimationProperties) {
+            return {
+                keyframesRule: '@keyframes ' + animationName + ' {from { opacity: 0; } to { opacity: 0; }}',
+                styleDeclaration: 'animation: 1ms ' + animationName + ';',
+                animationStartEvent: animationStartEvent,
+                animationName: animationName
+            };
+        }
 
-    	// Browser specific animation properties
-    	var keyframePrefix = '';
-    	var browserPrefixes = 'Webkit Moz O ms'.split(' ');
-    	var	startEvents = 'webkitAnimationStart animationstart oAnimationStart MSAnimationStart'.split(' ');
+        // Browser specific animation properties
+        var keyframePrefix = '';
+        var browserPrefixes = 'Webkit Moz O ms'.split(' ');
+        var startEvents = 'webkitAnimationStart animationstart oAnimationStart MSAnimationStart'.split(' ');
 
-    	var i;
-    	var l = browserPrefixes.length;
+        var i;
+        var l = browserPrefixes.length;
 
-    	for (i = 0; i < l ; i++) {
-    		if ((browserPrefixes[i] + 'AnimationName') in testElement.style) {
-    			keyframePrefix = '-' + browserPrefixes[i].toLowerCase() + '-';
-    			animationStartEvent = startEvents[i];
-    			break;
-    		}
-    	}
+        for (i = 0; i < l; i++) {
+            if ((browserPrefixes[i] + 'AnimationName') in testElement.style) {
+                keyframePrefix = '-' + browserPrefixes[i].toLowerCase() + '-';
+                animationStartEvent = startEvents[i];
+                break;
+            }
+        }
 
         animationPropertiesForBrowser = {
-    		keyframesRule: '@' + keyframePrefix + 'keyframes ' + animationName + ' {from { opacity: 0; } to { opacity: 0; }}',
-    		styleDeclaration: keyframePrefix + 'animation: 1ms ' + animationName + ';',
-    		animationStartEvent: animationStartEvent,
-    		animationName: animationName
-    	};
+            keyframesRule: '@' + keyframePrefix + 'keyframes ' + animationName + ' {from { opacity: 0; } to { opacity: 0; }}',
+            styleDeclaration: keyframePrefix + 'animation: 1ms ' + animationName + ';',
+            animationStartEvent: animationStartEvent,
+            animationName: animationName
+        };
 
-    	return animationPropertiesForBrowser;
+        return animationPropertiesForBrowser;
     }
 
     /**
@@ -66,53 +66,53 @@ var css = (function () {
             return isCssAnimationSupported;
         }
 
-    	var testElement = document.createElement('div');
-    	var isAnimationSupported = ('animationName' in testElement.style);
+        var testElement = document.createElement('div');
+        var isAnimationSupported = ('animationName' in testElement.style);
 
-    	if (isAnimationSupported) {
+        if (isAnimationSupported) {
             isCssAnimationSupported = true;
-    		return isCssAnimationSupported;
-    	}
+            return isCssAnimationSupported;
+        }
 
-    	var browserPrefixes = 'Webkit Moz O ms'.split(' ');
-    	var i = 0;
-    	var l = browserPrefixes.length;
+        var browserPrefixes = 'Webkit Moz O ms'.split(' ');
+        var i = 0;
+        var l = browserPrefixes.length;
 
-    	for (; i < l; i++) {
-    		if ((browserPrefixes[i] + 'AnimationName') in testElement.style) {
+        for (; i < l; i++) {
+            if ((browserPrefixes[i] + 'AnimationName') in testElement.style) {
                 isCssAnimationSupported = true;
-    			return isCssAnimationSupported;
-    		}
-    	}
+                return isCssAnimationSupported;
+            }
+        }
 
         isCssAnimationSupported = false;
-    	return isCssAnimationSupported;
+        return isCssAnimationSupported;
     }
 
     /**
      * Adds a style block that contains CSS essential for detecting resize events
      */
     function insertResizeSensorStyles () {
-    	var cssRules = [
-    		(getAnimationPropertiesForBrowser().keyframesRule) ? getAnimationPropertiesForBrowser().keyframesRule : '',
-    		'.ResizeSensor__resizeTriggers { ' + ((getAnimationPropertiesForBrowser().styleDeclaration) ? getAnimationPropertiesForBrowser().styleDeclaration : '') + ' visibility: hidden; opacity: 0; }',
-    		'.ResizeSensor__resizeTriggers, .ResizeSensor__resizeTriggers > div, .ResizeSensor__contractTrigger:before { content: \' \'; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; } .ResizeSensor__resizeTriggers > div { background: #eee; overflow: auto; } .ResizeSensor__contractTrigger:before { width: 200%; height: 200%; }'
-    	];
+        var cssRules = [
+            (getAnimationPropertiesForBrowser().keyframesRule) ? getAnimationPropertiesForBrowser().keyframesRule : '',
+            '.ResizeSensor__resizeTriggers { ' + ((getAnimationPropertiesForBrowser().styleDeclaration) ? getAnimationPropertiesForBrowser().styleDeclaration : '') + ' visibility: hidden; opacity: 0; }',
+            '.ResizeSensor__resizeTriggers, .ResizeSensor__resizeTriggers > div, .ResizeSensor__contractTrigger:before { content: \' \'; display: block; position: absolute; top: 0; left: 0; height: 100%; width: 100%; overflow: hidden; } .ResizeSensor__resizeTriggers > div { background: #eee; overflow: auto; } .ResizeSensor__contractTrigger:before { width: 200%; height: 200%; }'
+        ];
 
         cssRules = cssRules.join(' ');
 
-    	var headElem = document.head || document.getElementsByTagName('head')[0];
+        var headElem = document.head || document.getElementsByTagName('head')[0];
 
-    	var styleElem = document.createElement('style');
-    	styleElem.type = 'text/css';
+        var styleElem = document.createElement('style');
+        styleElem.type = 'text/css';
 
-    	if (styleElem.styleSheet) {
-    		styleElem.styleSheet.cssText = cssRules;
-    	} else {
-    		styleElem.appendChild(document.createTextNode(cssRules));
-    	}
+        if (styleElem.styleSheet) {
+            styleElem.styleSheet.cssText = cssRules;
+        } else {
+            styleElem.appendChild(document.createTextNode(cssRules));
+        }
 
-    	headElem.appendChild(styleElem);
+        headElem.appendChild(styleElem);
     }
 
     return {

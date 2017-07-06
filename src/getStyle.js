@@ -7,15 +7,15 @@ var getStyle = (function (global) {
      * @returns {null|string}
      */
     return function (element, property) {
-        var value = null;
-
-        if (element.currentStyle) {
-            value = element.currentStyle[property];
-        } else if (global.getComputedStyle) {
-            value = global.document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
+        if (!('currentStyle' in element) && !('getComputedStyle' in global)) {
+            return null;
         }
 
-        return value;
+        if (element.currentStyle) {
+            return element.currentStyle[property];
+        }
+
+        return global.document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
     }
 })(typeof window !== 'undefined' ? window : this);
 
