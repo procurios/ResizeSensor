@@ -1,4 +1,4 @@
-var getStyle = (function () {
+var getStyle = (function (global) {
     'use strict';
 
     /**
@@ -6,17 +6,17 @@ var getStyle = (function () {
      * @param {string} property
      * @returns {null|string}
      */
-    return function getStyle (element, property) {
+    return function (element, property) {
         var value = null;
 
         if (element.currentStyle) {
             value = element.currentStyle[property];
-        } else if (window.getComputedStyle) {
-            value = document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
+        } else if (global.getComputedStyle) {
+            value = global.document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
         }
 
         return value;
     }
-})();
+})(typeof window !== 'undefined' ? window : this);
 
 module.exports = getStyle;
