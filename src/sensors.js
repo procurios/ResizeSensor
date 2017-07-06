@@ -81,7 +81,7 @@ var sensors = (function () {
     return {
         create: create,
         destroy: destroy
-    }
+    };
 })();
 
 module.exports = sensors;
