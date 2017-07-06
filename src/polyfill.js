@@ -1,36 +1,36 @@
-var polyfill = (function () {
+var polyfill = (function (global) {
     'use strict';
 
     /**
      * @see https://gist.github.com/mrdoob/838785
      */
     function polyfillRequestAnimationFrame () {
-    	if (!window.requestAnimationFrame) {
-    		window.requestAnimationFrame = (function () {
-    			return window.webkitRequestAnimationFrame ||
-    				window.mozRequestAnimationFrame ||
-    				window.oRequestAnimationFrame ||
-    				window.msRequestAnimationFrame ||
-    				function (callback) {
-    					window.setTimeout(callback, 1000 / 60);
-    				};
-    		})();
-    	}
+        if (!global.requestAnimationFrame) {
+            global.requestAnimationFrame = (function () {
+                return global.webkitRequestAnimationFrame ||
+                    global.mozRequestAnimationFrame ||
+                    global.oRequestAnimationFrame ||
+                    global.msRequestAnimationFrame ||
+                    function (callback) {
+                        global.setTimeout(callback, 1000 / 60);
+                    };
+            })();
+        }
 
-    	if (!window.cancelAnimationFrame) {
-    		window.cancelAnimationFrame = (function () {
-    			return window.webkitCancelAnimationFrame ||
-    				window.mozCancelAnimationFrame ||
-    				window.oCancelAnimationFrame ||
-    				window.msCancelAnimationFrame ||
-    				window.clearTimeout;
-    		})();
-    	}
+        if (!global.cancelAnimationFrame) {
+            global.cancelAnimationFrame = (function () {
+                return global.webkitCancelAnimationFrame ||
+                    global.mozCancelAnimationFrame ||
+                    global.oCancelAnimationFrame ||
+                    global.msCancelAnimationFrame ||
+                    global.clearTimeout;
+            })();
+        }
     }
 
     return {
         requestAnimationFrame: polyfillRequestAnimationFrame
-    }
-})();
+    };
+})(typeof window !== 'undefined' ? window : this);
 
 module.exports = polyfill;

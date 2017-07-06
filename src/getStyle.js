@@ -16,7 +16,7 @@ var getStyle = (function (global) {
         }
 
         return global.document.defaultView.getComputedStyle(element, null).getPropertyValue(property);
-    }
+    };
 })(typeof window !== 'undefined' ? window : this);
 
 module.exports = getStyle;
