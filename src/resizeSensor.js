@@ -1,4 +1,4 @@
-var resizeSensorFactory = (function () {
+var resizeSensorFactory = (function (global) {
     'use strict';
 
     /** @var {Function} */
@@ -22,7 +22,7 @@ var resizeSensorFactory = (function () {
             height: 0
         };
 
-        if ('attachEvent' in document) {
+        if ('attachEvent' in global.document) {
             this.boundOnResizeHandler = this.onElementResize.bind(this);
             this.targetElement.attachEvent('onresize', this.boundOnResizeHandler);
             return;
@@ -62,10 +62,10 @@ var resizeSensorFactory = (function () {
     };
 
     resizeSensor.prototype.insertResizeTriggerElements = function () {
-        var resizeTrigger = document.createElement('div');
-        var expandTrigger = document.createElement('div');
-        var expandTriggerChild = document.createElement('div');
-        var contractTrigger = document.createElement('div');
+        var resizeTrigger = global.document.createElement('div');
+        var expandTrigger = global.document.createElement('div');
+        var expandTriggerChild = global.document.createElement('div');
+        var contractTrigger = global.document.createElement('div');
 
         resizeTrigger.className = 'ResizeSensor ResizeSensor__resizeTriggers';
         expandTrigger.className = 'ResizeSensor__expandTrigger';
@@ -99,10 +99,10 @@ var resizeSensorFactory = (function () {
         this.resetTriggers();
 
         if (this.resizeRAF) {
-            window.cancelAnimationFrame(this.resizeRAF);
+            global.cancelAnimationFrame(this.resizeRAF);
         }
 
-        this.resizeRAF = window.requestAnimationFrame(function () {
+        this.resizeRAF = global.requestAnimationFrame(function () {
             var currentDimensions = _this.getDimensions();
             if (_this.isResized(currentDimensions)) {
                 _this.dimensions.width = currentDimensions.width;
@@ -162,7 +162,7 @@ var resizeSensorFactory = (function () {
     };
 
     resizeSensor.prototype.removeEventListeners = function () {
-        if ('attachEvent' in document) {
+        if ('attachEvent' in global.document) {
             this.targetElement.detachEvent('onresize', this.boundOnResizeHandler);
             return;
         }
@@ -184,6 +184,6 @@ var resizeSensorFactory = (function () {
             return new resizeSensor(targetElement, callback);
         }
     };
-})();
+})(typeof window !== 'undefined' ? window : this);
 
 module.exports = resizeSensorFactory;

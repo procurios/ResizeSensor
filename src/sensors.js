@@ -1,4 +1,4 @@
-var sensors = (function () {
+var sensors = (function (global) {
     'use strict';
 
     /** @var {Object} */
@@ -11,7 +11,7 @@ var sensors = (function () {
     /** {array} */
     var unsuitableElements = ['IMG', 'COL', 'TR', 'THEAD', 'TFOOT'];
     /** {boolean} */
-    var supportsAttachEvent = ('attachEvent' in document);
+    var supportsAttachEvent = ('attachEvent' in global.document);
 
     /** {{}} Map of all resize sensors (id => ResizeSensor) */
     var allResizeSensors = {};
@@ -19,7 +19,7 @@ var sensors = (function () {
     if (!supportsAttachEvent) {
         css.insertResizeSensorStyles();
 
-        if (!('requestAnimationFrame' in window) || !('cancelAnimationFrame' in window)) {
+        if (!('requestAnimationFrame' in global) || !('cancelAnimationFrame' in global)) {
             polyfill.requestAnimationFrame();
         }
     }
@@ -82,6 +82,6 @@ var sensors = (function () {
         create: create,
         destroy: destroy
     };
-})();
+})(typeof window !== 'undefined' ? window : this);
 
 module.exports = sensors;
