@@ -53,4 +53,4 @@ module, so make sure your loader supports resolving and loading named modules. Y
 
 ## License
 
-MIT (see LICENSE)
+MIT (see LICENSE).
