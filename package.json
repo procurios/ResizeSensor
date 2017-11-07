@@ -1,6 +1,6 @@
 {
   "name": "procurios.resizesensor",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Performance friendly element resize detection",
   "main": "dist/resizeSensor.min.js",
   "scripts": {
