@@ -1,5 +1,5 @@
 {
-  "name": "@procurios/resizesensor",
+  "name": "procurios.resizesensor",
   "version": "0.2.3",
   "description": "Performance friendly element resize detection",
   "main": "dist/resizeSensor.min.js",
