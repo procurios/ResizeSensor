@@ -1,6 +1,6 @@
 {
   "name": "resizeSensor",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Performance friendly element resize detection",
   "main": "dist/resizeSensor.min.js",
   "scripts": {
