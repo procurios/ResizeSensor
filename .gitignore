@@ -1,0 +1,12 @@
+
+# PhpStorm, IntelliJ IDEA
+/.idea
+*.iml
+
+# OS X
+.DS_Store
+Thumbs.db
+
+# Node, npm
+node_modules
+npm-*.log
