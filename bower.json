@@ -1,0 +1,17 @@
+{
+  "name": "procurios.resizesensor",
+  "description": "Performance friendly element resize detection",
+  "main": "dist/resizeSensor.min.js",
+  "authors": [
+    "Procurios <dev@procurios.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/procurios/ResizeSensor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
