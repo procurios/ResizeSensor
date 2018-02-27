@@ -60,6 +60,10 @@ var sensors = (function (global) {
         sensor.destroy();
         delete allResizeSensors[sensorId];
     }
+    
+    function clear () {
+        allResizeSensors = {};
+    }
 
     /**
      * @param {Element} targetElement
@@ -80,7 +84,8 @@ var sensors = (function (global) {
 
     return {
         create: create,
-        destroy: destroy
+        destroy: destroy,
+        clear: clear
     };
 })(typeof window !== 'undefined' ? window : this);
 
